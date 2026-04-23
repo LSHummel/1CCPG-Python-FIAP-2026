@@ -1,3 +1,4 @@
+#  Faça um programa que leia um número, e informe se ele é par ou impar.
 '''
 numero = int(input("Digite um número: "))
 
@@ -10,7 +11,7 @@ else:
 '''
 
 
-
+# Faça um programa que peça dois números e imprima o maior deles, e informe caso eles sejam iguais.
 '''
 numero_1 = int(input("Digite qualquer número de 0 a 100: "))
 numero_2 = int(input("Digite qualquer número de 0 a 100, novamente: "))
@@ -24,6 +25,10 @@ else:
 '''
 
 
+# Faça um programa para a leitura de quatro notas parciais de um aluno. O programa deve calcular a média alcançada pelo aluno e apresentar:
+# A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
+# A mensagem "Em recuperação", se a média for entre cinco, incluindo o cinco, e sete;
+# A mensagem "Reprovado", se a média for menor que cinco.
 '''
 nota_1 = float(input("Digite sua primera nota: "))
 nota_2 = float(input("Digite sua segunda nota: "))
@@ -41,6 +46,8 @@ else:
 '''
 
 
+# Faça um programa que leia 2 valores inteiros (A e B).
+# A seguir, o programa deve mostrar uma mensagem "São Múltiplos" ou "Não são Múltiplos", indicando se os valores lidos são múltiplos entre si.
 '''
 numero_1 = int(input("Digite um número: "))
 numero_2 = int(input("Digite um número: "))
@@ -56,6 +63,10 @@ else:
     print("Os números não são multiplos")
 '''
 
+
+# Escreva um algoritmo que recebe dois números e um caractere (representando uma das operações matemáticas (+, -, *, /)
+# O programa deve calcular o valor final de acordo com a operação selecionada.
+# Ou seja, se a entrada for 5, 6 e *, então seu programa dever mostrar 30.
 '''
 numero_1 = float(input("Digite um número: "))
 numero_2 = float(input("Digite um número: "))
@@ -73,6 +84,12 @@ elif operador == "*":
 print(f"A conta resulta em: {conta:.2f}")
 '''
 
+
+# Faça um programa que receba o ano de nascimento da pessoa e retorne:
+# Se o voto é obrigatório este ano;
+# Se o voto é opcional este ano;
+# Se o voto é proibido este ano.
+
 '''
 nascimento = int(input("Digite seu ano de nascimento: "))
 
@@ -87,6 +104,17 @@ else:
 print(idade)
 '''
 
+
+#▪ Faça um programa que recebe o salário de um colaborador e o reajuste segundo o seguinte critério, baseado no salário atual:
+# ▪ Salários até R$ 280,00 (incluindo): aumento de 20%.
+# ▪ Salários entre R$ 280,00 e R$ 700,00: aumento de 15%.
+# ▪ Salários entre R$ 700,00 e R$ 1500,00: aumento de 10%.
+# ▪ Salários de R$ 1500,00 em diante: aumento de 5%.
+#▪ Após o aumento ser realizado, informe na tela:
+# ▪ O salário antes do reajuste.
+# ▪ O percentual de aumento aplicado.
+# ▪ O valor do aumento.
+# ▪ O novo salário, após o aumento.
 '''
 salario = float(input("Informe o seu salário: R$"))
 
@@ -112,6 +140,17 @@ print(f"Percentual de aumento: {percentual}%")
 print(f"Valor do aumento: R${aumento:.2f}")
 print(f"Salario depois do reajuste: R${reajuste:.2f}")
 '''
+
+
+#▪ Faça um programa que recebe:
+# ▪ o código do estado de origem da carga de um caminhão, supondo que é um número inteiro de 1 a 5
+# ▪ o peso da carga do caminhão em toneladas
+# ▪ o código da carga, supondo que é um número inteiro de 10 e 40
+#▪ Seu programa deve calcular:
+# ▪ o peso da carga do caminhão convertido em quilos
+# ▪ o preço da carga do caminhão
+# ▪ valor do imposto que e cobrado com base no preço da carga e do estado de origem
+# ▪ o valor total transportado pelo caminhão (carga + impostos)
 
 '''
 codigo_o = int(input("Informeo código do estado de origem o caminhão(1 a 5): "))
@@ -145,6 +184,15 @@ print(f"Preço da carga: R${preco:.2f}")
 print(f"Valor do imposto: R${imposto:.2f}")
 print(f"Valor total: R${valor_total:.2f}")
 '''
+
+
+#▪ Faça um programa que leia 3 valores que representam os lados de um triângulo A, B e C e ordene-os em ordem decrescente, de modo que o lado A representa o maior dos 3 lados. A seguir, determine o tipo de triângulo que estes três lados formam, com base nos seguintes casos:
+# ▪ Se A ≥ B+C, apresente a mensagem: NAO FORMA TRIANGULO;
+# ▪ Se A² = B² + C² , apresente a mensagem: TRIANGULO RETANGULO;
+# ▪ Se A² > B² + C² , apresente a mensagem: TRIANGULO OBTUSANGULO;
+# ▪ Se A² < B² + C² , apresente a mensagem: TRIANGULO ACUTANGULO;
+# ▪ Se os três lados forem iguais, apresente a mensagem: TRIANGULO EQUILATERO;
+# ▪ Se apenas dois dos lados forem iguais, apresente a mensagem: TRIANGULO ISOSCELES;
 
 '''
 lado_1 = float(input("Medida do lado do triângulo: "))
