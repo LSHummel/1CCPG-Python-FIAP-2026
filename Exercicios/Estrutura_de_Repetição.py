@@ -102,14 +102,13 @@ for i in range(1, n+1):
 # Determine e mostre todos os números primos no intervalo de 2 a 2000.
 '''
 for n in range(2, 2001):
-    for i in range(2, 2001):
-        if n%i == 0 :
-            print(i)
-'''
-n = int(input("Digite um número n positivo: "))
-while n < 0:
-    n = int(input("Digite novamente o n positivo: "))
+    primo = True
 
-for i in range(1, n+1):
-    if n % i == 0:
-        print(i)
+    for i in range(2, n):
+        if n % i == 0:
+            primo = False
+            break
+
+    if primo:
+        print(n)
+'''
