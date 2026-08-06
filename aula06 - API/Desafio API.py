@@ -8,24 +8,35 @@ status = [
 ]
 
 
-ok = 0
-off = 0
-mais_off = 0
+acertos = 0
+erros = 0
+mais_erros = 0
+endpoint_erro = 0
 
 
 for x, end in enumerate(status):
-    print()
     for i, erro in enumerate(end):
 
         if status[x][i] >= 200 and status[x][i] < 300:
-            ok += 1
-
+            acertos += 1
         else:
-            off += 1
+            erros += 1
 
-    procentagem = 100*ok/len(status[x])
+
+
+    if erros > mais_erros:
+        mais_erros = erros
+        endpoint_erro = x
+
+
+    procentagem = 100*acertos/len(status[x])
 
     print(f"A procentagem de requisições bem-secedidas é de {procentagem:.0f}%")
-    ok = 0
-    off = 0
+    acertos = 0
+    erros = 0
+    sequencia_off = 0
+
+print()
+print(f"O endpoint com mais erro é o {endpoints[endpoint_erro]}")
+print()
 
