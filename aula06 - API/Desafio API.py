@@ -36,25 +36,19 @@ for x, end in enumerate(status):
         endpoint_erro = x
 
 
-    procentagem = 100*acertos/len(status[x])
+    porcentagem = 100*acertos/len(status[x])
 
-    print(f"A procentagem de requisições bem-secedidas é de {procentagem:.0f}%")
+    print(f"A procentagem de requisições bem-secedidas é de {porcentagem:.0f}%")
     acertos = 0
     erros = 0
 
-    if procentagem >= 80:
+
+    if sequencias[x] == 1:
+        print("Crítico")
+    elif porcentagem >= 80:
         print("Estável")
     else:
         print("Instável")
-    if sequencias[x] == 1:
-        print("Crítico")
-
-
-
-    if sequencias[x] == 1:
-        print("Teve dois erros seguidos.")
-    else:
-        print("Não teve dois erros seguidos.")
 
 
 
