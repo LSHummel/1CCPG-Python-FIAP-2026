@@ -12,15 +12,22 @@ acertos = 0
 erros = 0
 mais_erros = 0
 endpoint_erro = 0
+sequencias = [0, 0, 0]
+
+
 
 
 for x, end in enumerate(status):
-    for i, erro in enumerate(end):
+    for i, codigo in enumerate(end):
 
         if status[x][i] >= 200 and status[x][i] < 300:
             acertos += 1
         else:
             erros += 1
+
+        if i < len(end) - 1:
+            if codigo >= 400 and end[i + 1] >= 400:
+                sequencias[x] = 1
 
 
 
@@ -34,7 +41,23 @@ for x, end in enumerate(status):
     print(f"A procentagem de requisições bem-secedidas é de {procentagem:.0f}%")
     acertos = 0
     erros = 0
-    sequencia_off = 0
+
+    if procentagem >= 80:
+        print("Estável")
+    else:
+        print("Instável")
+    if sequencias[x] == 1:
+        print("Crítico")
+
+
+
+    if sequencias[x] == 1:
+        print("Teve dois erros seguidos.")
+    else:
+        print("Não teve dois erros seguidos.")
+
+
+
 
 print()
 print(f"O endpoint com mais erro é o {endpoints[endpoint_erro]}")
