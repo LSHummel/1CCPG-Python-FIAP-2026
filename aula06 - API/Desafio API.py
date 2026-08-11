@@ -15,8 +15,6 @@ endpoint_erro = 0
 sequencias = [0, 0, 0]
 
 
-
-
 for x, end in enumerate(status):
     for i, codigo in enumerate(end):
 
@@ -30,14 +28,12 @@ for x, end in enumerate(status):
                 sequencias[x] = 1
 
 
-
     if erros > mais_erros:
         mais_erros = erros
         endpoint_erro = x
 
 
     porcentagem = 100*acertos/len(status[x])
-
     print(f"A procentagem de requisições bem-secedidas é de {porcentagem:.0f}%")
     acertos = 0
     erros = 0
@@ -51,9 +47,6 @@ for x, end in enumerate(status):
         print("Instável")
 
 
-
-
 print()
 print(f"O endpoint com mais erro é o {endpoints[endpoint_erro]}")
 print()
-
