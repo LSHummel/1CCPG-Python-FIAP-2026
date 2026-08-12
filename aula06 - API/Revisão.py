@@ -67,13 +67,57 @@ for n in range(2, 2001):
 
 
 # Exercício 6
+'''
+import random
+
+n = int(input("Digite um número n: "))
+
+while n <= 0:
+    print("Digite um número positivo")
+    n = int(input("Digite um número n: "))
+
+vet_n = []
+
+for num in range(n):
+    vet_n.append(random.randint(0, n))
+
+print(vet_n)
+'''
 
 
+# Exercício 7
+'''
+n = int(input("Digite um número n: "))
+
+while n <= 0:
+    print("Digite um número positivo")
+    n = int(input("Digite um número n: "))
+
+vet_n = []
+
+for num in range(n):
+    vet_n.append(num)
+
+vet_n.sort(reverse=True)
+print(vet_n)
+'''
 
 
+# Exercício 8
+'''
+A = [[4, 7, 1],
+    [5, -3, 9]]
+B = [[3, 0, 6],
+     [2, 10, -2]]
 
+C = []
 
-
+for i in range(len(A)):
+    for n in range(len(A[0])):
+        soma = A[i][n] + B[i][n]
+        C.append(soma)
+print(C)
+'''
 
 
 
