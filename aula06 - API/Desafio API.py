@@ -17,7 +17,7 @@ sequencias = [0, 0, 0]
 for x, end in enumerate(status):
     for i, codigo in enumerate(end):
 
-        if codigo >= 200 and codigo < 300:
+        if 200 <= codigo < 300:
             acertos += 1
         else:
             erros += 1
