@@ -14,11 +14,6 @@ for num in emails:
     tf.append(username)
     t = tuple(tf)
 
-
-
-
-
-
 print(f"Quantidade de emails por dominio: \n{d}\n")
 print(f"Lista de úsuarios {t}")
 
