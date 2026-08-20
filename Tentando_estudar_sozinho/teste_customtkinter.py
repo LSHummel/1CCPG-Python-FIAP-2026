@@ -71,13 +71,18 @@ import customtkinter as ctk
 #======================================
 #              Funções
 #======================================
+
+
+# PEGA, COLOCA NO JSON, E ABRE O PAINEL DE INFO
 def salvar_tudo():
     modelo = entrada_modelo.get()
     porcentagem = entrada_porcentagem.get()
     kwh = entrada_kwh.get()
-    salvar_dados(modelo, porcentagem, kwh)
-    abrir_painel()
 
+    salvar_dados(modelo, porcentagem, kwh)
+    abrir_painel_informacoes()
+
+# CRIA O JSON
 def salvar_dados(modelo, porcentagem, kwh):
     import json
     import os
@@ -109,27 +114,59 @@ def salvar_dados(modelo, porcentagem, kwh):
     with open("dados_recarga.json", "w", encoding="utf-8") as arquivo:
         json.dump(dados, arquivo, indent=4, ensure_ascii=False)
 
-def abrir_painel():
+
+# ABRE O PAINEL DE INFORMAÇÕES DO CARRO
+def abrir_painel_informacoes():
+    from calc_recarga import ener_consumida,tempo_h,tempo_m,valor_total
+
+
     frame = ctk.CTkFrame(
         totem,
-        width=400,
-        height=300
+        width=1000,
+        height=800
     )
-
     frame.place(
         relx=0.5,
         rely=0.5,
         anchor="center"
     )
 
+    frame.pack_propagate(False)
+
+
+    titulo_info = ctk.CTkLabel(
+        frame,
+        text="Informações da Recarga",
+        font=("Arial", 50)
+    )
+    titulo_info.pack(pady=(20,0))
+
+    info_consumida = ctk.CTkLabel(
+        frame,
+        text=f"A energia que será consumida pelo carro é: {ener_consumida} kwh",
+        font=("Arial", 30)
+    )
+    info_consumida.pack(pady=(40,0))
+
+    info_tempo = ctk.CTkLabel(
+        frame,
+        text=f"O tempo total de recarga do carro é: {tempo_h}:{tempo_m:.2f}",
+        font=("Arial", 30)
+    )
+    info_tempo.pack(pady=(40, 0))
+
+    info_custo = ctk.CTkLabel(
+        frame,
+        text=f"O custo total da recarga é: R${valor_total:.2f} ",
+        font=("Arial", 30)
+    )
+    info_custo.pack(pady=(40, 0))
 
 
 #======================================
 #     Configurações da janela
 #======================================
 ctk.set_appearance_mode("light")
-
-
 totem = ctk.CTk()
 totem.title("Totem - ChargeGrid Intelligence")
 totem.attributes("-fullscreen", True)
