@@ -68,63 +68,160 @@ import customtkinter as ctk
 #
 # app.mainloop()
 
-import customtkinter as ctk
+#======================================
+#              Funções
+#======================================
+def salvar_tudo():
+    modelo = entrada_modelo.get()
+    porcentagem = entrada_porcentagem.get()
+    kwh = entrada_kwh.get()
+    salvar_dados(modelo, porcentagem, kwh)
+    abrir_painel()
+
+def salvar_dados(modelo, porcentagem, kwh):
+    import json
+    import os
 
 
-def iniciar():
-    resultado.configure(text="Sistema iniciado!")
+    novo_registro = {
+        "Modelos": modelo,
+        "porcentagem": porcentagem,
+        "kwh": kwh
+    }
+
+    # Verifica se o arquivo já existe
+    if os.path.exists("dados_recarga.json"):
+
+        try:
+            with open("dados_recarga.json", "r", encoding="utf-8") as arquivo:
+                dados = json.load(arquivo)
+
+        except json.JSONDecodeError:
+            dados = []
+
+    else:
+        dados = []
+
+    # Adiciona o novo registro ao histórico
+    dados.append(novo_registro)
+
+    # Salva novamente o arquivo
+    with open("dados_recarga.json", "w", encoding="utf-8") as arquivo:
+        json.dump(dados, arquivo, indent=4, ensure_ascii=False)
+
+def abrir_painel():
+    frame = ctk.CTkFrame(
+        totem,
+        width=400,
+        height=300
+    )
+
+    frame.place(
+        relx=0.5,
+        rely=0.5,
+        anchor="center"
+    )
 
 
-# Configurações
-ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("blue")
+
+#======================================
+#     Configurações da janela
+#======================================
+ctk.set_appearance_mode("light")
 
 
-# Janela
-app = ctk.CTk()
-
-app.title("ChargeGrid Intelligence")
-app.geometry("600x400")
+totem = ctk.CTk()
+totem.title("Totem - ChargeGrid Intelligence")
+totem.attributes("-fullscreen", True)
 
 
-# Título
 titulo = ctk.CTkLabel(
-    app,
-    text="ChargeGrid Intelligence",
-    font=("Arial", 24)
+    totem,
+    text="GoodWe",
+    font=("Arial", 100)
 )
+titulo.pack(pady=(20, 0))
 
-titulo.pack(pady=30)
 
 
-# Campo
-entrada = ctk.CTkEntry(
-    app,
-    width=300,
-    placeholder_text="Nome da estação"
+#======================================
+#      Modelo do Carro
+#======================================
+titulo_modelo = ctk.CTkLabel(
+    totem,
+    text="Informe o modelo do carro: ",
+    font=("Arial", 40)
 )
+titulo_modelo.pack(pady=(100, 0))
 
-entrada.pack(pady=10)
-
-
-# Botão
-botao = ctk.CTkButton(
-    app,
-    text="Iniciar sistema",
-    command=iniciar
+entrada_modelo = ctk.CTkEntry(
+    totem,
+    width=1000,
+    height=50,
+    placeholder_text="Modelo"
 )
+entrada_modelo.pack(pady=(30, 0))
 
-botao.pack(pady=10)
 
 
-# Resultado
-resultado = ctk.CTkLabel(
-    app,
-    text=""
+
+#======================================
+#      Porcentagem do Carro
+#======================================
+titulo_porcentagem = ctk.CTkLabel(
+    totem,
+    text="Informe quantos porcento de bateria tem no carro: ",
+    font=("Arial", 40)
 )
+titulo_porcentagem.pack(pady=(50, 0))
 
-resultado.pack(pady=20)
+entrada_porcentagem = ctk.CTkEntry(
+    totem,
+    width=1000,
+    height=50,
+    placeholder_text="Porcentagem"
+)
+entrada_porcentagem.pack(pady=(30, 0))
 
 
-# Iniciar aplicação
-app.mainloop()
+
+
+#======================================
+#      kWh do Carro
+#======================================
+titulo_kwh = ctk.CTkLabel(
+    totem,
+    text="Insira quantos quilo-watts(kWh) cabem no carro: ",
+    font=("Arial", 40)
+)
+titulo_kwh.pack(pady=(50, 0))
+
+entrada_kwh = ctk.CTkEntry(
+    totem,
+    width=1000,
+    height=50,
+    placeholder_text="kWh"
+)
+entrada_kwh.pack(pady=(30, 0))
+
+
+
+
+#======================================
+#            Botão
+#======================================
+botao_proximo = ctk.CTkButton(
+    totem,
+    text="Concluir",
+    command=salvar_tudo,
+    fg_color="red",
+    hover_color="darkred",
+    width=200,
+    height=50,
+)
+botao_proximo.pack(pady=(100, 0))
+
+
+
+totem.mainloop()
+
